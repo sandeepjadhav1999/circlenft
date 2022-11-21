@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+*::-webkit-scrollbar{
+    display: none;
+  }
+  
+.dialog-box .mat-dialog-container{
+  width: 500px;
+  height: 700px;
+  padding: 0;
+  border-radius: 15px;
+  position: relative;
+}
+.wave{
+  position: absolute;
+  bottom: 0;
+  width: 501px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin-top: 0;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0.34375em;
+}

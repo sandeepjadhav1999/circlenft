@@ -1,0 +1,52 @@
+<div>
+  <video preload="auto" loop muted playsinline autoplay #playvideo>
+    <source src="assets/movingVideo.mp4" type="video/mp4" />
+  </video>
+  <div class="containerPrimary">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxLayoutAlign.lt-md="center center"
+      fxLayout.lt-md="column"
+      fxLayoutGap.lt-md="13px"
+    >
+      <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%">
+        <img src="assets/logo.png" alt="Ascendion Logo" class="imgSource" />
+      </div>
+      <div fxFlex="1 1 50%" class="text-right" fxFlex.lt-md="1 1 100%">
+        <button class="loginButton" mat-flat-button (click)="login()">Login</button>
+      </div>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxLayoutAlign.lt-md="center center"
+      fxLayout.lt-md="column"
+      fxLayoutGap.lt-md="13px"
+    >
+      <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%" class="mainImage">
+        <img
+          src="assets/ascendion.png"
+          alt="Ascendion"
+          class="mainImage1 puff-in-center "
+        />
+      </div>
+      <div fxFlex="1 1 50%" class="text-right" class="mainImage" fxHide.lt-md>
+        <img
+          src="assets/frontImage.png"
+          alt=""
+          class="secondaryImage puff-in-center"
+        />
+      </div>
+    </div>
+    <div class="mainPlay">
+      <button
+      class="playClass"
+        mat-stroked-button
+        (click)="change()"
+      >
+        {{ backgroundVideo }}
+      </button>
+    </div>
+  </div>
+</div>

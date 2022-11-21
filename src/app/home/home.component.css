@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+
+video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.containerPrimary {
+  padding-top: 15px;
+  max-width: 1650px;
+  margin: 0 auto;
+}
+
+.loginButton {
+  background-color: transparent;
+  font-size: 30px;
+  font-weight: 700;
+  color: black;
+  font-family: "Roboto", sans-serif;
+}
+
+.loginButton:hover {
+  border: solid 2px #555961;
+  font-size: 30px;
+  font-weight: 700;
+  color: black;
+}
+.imgSource {
+  filter: brightness(10%);
+  width: 25%;
+}
+
+.text-right {
+  text-align: end;
+}
+
+.mainImage {
+  margin: auto 0;
+  text-align: center;
+}
+.mainImage1 {
+  padding-top: 150px;
+  width: 500px;
+  filter: brightness(99%);
+}
+.secondaryImage {
+  width: 500px;
+  filter: contrast(180%);
+}
+
+.mainPlay {
+  width: 100px;
+  margin: 0 auto;
+}
+
+.playClass {
+  color: white;
+  border: white solid; 
+  width: 100px
+}
+
+.puff-in-center {
+  -webkit-animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715)
+    0.5s both;
+  animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.5s both;
+}
+
+@-webkit-keyframes puff-in-center {
+  0% {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes puff-in-center {
+  0% {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+
+.wobble-hor-bottom {
+	-webkit-animation: wobble-hor-bottom 0.8s both;
+	        animation: wobble-hor-bottom 0.8s both;
+}
+
