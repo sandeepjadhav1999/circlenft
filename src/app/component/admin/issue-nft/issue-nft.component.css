@@ -1,0 +1,88 @@
+.text-right{
+text-align: end;
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-size: 400%;
+margin-bottom: 20px;
+color: #2f7cbb;
+padding-bottom: 10px;
+border-bottom: 2px solid lightblue;
+}
+.back-btn{
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.issue-container{
+    max-width: 1600px;
+    margin: 10px auto;
+    position: relative;
+}
+
+h1 {
+    display: flex;
+    flex-direction: row;
+    color: #2f7cbb;
+  }
+  h1:before, h1:after{
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid;
+    margin: auto;
+  }
+  h1:before {
+    margin-right: 10px
+  }
+  h1:after {
+    margin-left: 10px
+  }
+
+.w-45{
+  width: 43%;
+  margin-right: 57px;
+}
+.w-39{
+  margin-right: 14px;
+}
+
+.w-30{
+  width: 23.9%;
+  margin-right: 10px;
+}
+
+.w-31{
+  width: 49%;
+}
+.mr{
+  margin-right: 14px;
+}
+
+
+.form-2{
+  width: 740px;
+}
+
+.form-postion{
+  position: relative;
+}
+
+.pop{
+  position: absolute;
+  top: 0;
+  left: 990px;
+}
+
+.buttonSubmit{
+  width: 740px;
+  margin: 0 auto;
+  margin-left: 0;
+}
+.btnSUbmit{
+  margin: 0 auto;
+  display: flex;
+}
+.spinner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}

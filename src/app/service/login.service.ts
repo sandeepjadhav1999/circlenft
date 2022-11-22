@@ -10,8 +10,14 @@ import { updatePassword } from '../model/update-password';
 })
 export class LoginService {
   isLoggedIn: boolean = false;
+  currentUser:string
 
   constructor(private httpClient: HttpClient) {}
+
+  getCurrentUser(){
+    this.currentUser=sessionStorage.getItem("loggedInUser")
+    console.log(sessionStorage.getItem("loggedInUser"))
+  }
 
   login(data: Login): Observable<Login> {
     return this.httpClient.post<Login>(

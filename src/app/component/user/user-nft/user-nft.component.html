@@ -1,0 +1,53 @@
+<div class="text-right" fxLayout="row">
+    <div style="margin: 15px auto">{{userName}}'s NFT Details</div>
+</div>
+<div class="nft-container">
+    <div class="noDataAlign" *ngIf="length === 0">
+        <img src="assets/noNft.png" alt="" class="noData" />
+        <h1 class="noDataText">No NFTs Issued</h1>
+    </div>
+    <div>
+        <div class="form-data">
+            <mat-form-field class="w-30" appearance="outline">
+                <input type="text" placeholder="Search" matInput [(ngModel)]="filteredData" />
+                <mat-icon matPrefix style="margin-right: 10px">search</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="content">
+            <div fxLayout="row wrap" fxLayoutGap="16px grid">
+                <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let nfts of newFilterNftsData| slice: paginator.pageIndex * paginator.pageSize: (paginator.pageIndex + 1) * paginator.pageSize">
+                    <mat-card class="example-card">
+                        <mat-card-header>
+                            <div mat-card-avatar>
+                                <img src="assets/admin.png" alt="" class="allnftprofile" />
+                            </div>
+                            <mat-card-title>{{ nfts.nftOwner }}</mat-card-title>
+                            <mat-card-subtitle class="nftIDBreak"><span style="font-weight: bolder; color: black">NFT
+                                    Id: </span>{{ nfts.nftId }}</mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image class="displayImg" src="{{nfts.nftURL}}" alt="NFT Badges" />
+                        <mat-card-content>
+                            <div>
+                                <span style="font-weight: bolder; color: black">NFT Status: </span>{{ nfts.practice }}
+                            </div>
+                            <div>
+                                <span style="font-weight: bolder; color: black">Circle: </span>{{ nfts.circle }}
+                            </div>
+                            <div>
+                                <span style="font-weight: bolder; color: black">NFT Status: </span>{{ nfts.nftStatus }}
+                            </div>
+                        </mat-card-content>
+                        <mat-card-actions class="actions">
+                            <button mat-stroked-button color="primary" (click)="view(nfts)">
+                                View
+                            </button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+        <mat-paginator class="demo-paginator" #paginator [length]="length" [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = $event">
+        </mat-paginator>
+    </div>
+</div>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AllNftComponent } from './all-nft.component';
+import { UserOperationComponent } from './user-operation.component';
 
-describe('AllNftComponent', () => {
-  let component: AllNftComponent;
-  let fixture: ComponentFixture<AllNftComponent>;
+describe('UserOperationComponent', () => {
+  let component: UserOperationComponent;
+  let fixture: ComponentFixture<UserOperationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AllNftComponent ]
+      declarations: [ UserOperationComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AllNftComponent);
+    fixture = TestBed.createComponent(UserOperationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

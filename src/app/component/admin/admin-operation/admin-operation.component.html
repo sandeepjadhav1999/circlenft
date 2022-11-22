@@ -1,1 +1,78 @@
-<p>admin-operation works!</p>
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center" class="nav">
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <button fxHide.gt-sm mat-icon-button matTooltip="Sidebar" (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <img fxHide.lt-md src="assets/logo.png" alt="Ascendion Logo" class="imgSource" />
+        <button mat-flat-button class="btn main-btn" [routerLink]="['/admin','adminoperation','issueNft']" (click)="onChanging()">Issue NFT</button>
+        <button mat-flat-button class="btn main-btn2" [routerLink]="['/admin','adminoperation','allNft']"  (click)="onChanging()">Retrieve All NFTs</button>
+        <button mat-flat-button class="btn"  [routerLink]="['/home']" (click)="logout()">Log Out</button>
+    </div>
+    <div class="admin-header" fxHide.lt-lg>
+        <img src="assets/admin.png" alt="" class="admin-logo" />
+        <div class="admin-text">{{currentUser}}</div>
+    </div>
+
+</mat-toolbar>
+
+
+<mat-drawer-container class="drawer-container">
+    <mat-drawer #drawer class="drawer" mode="side" opened="false">
+    </mat-drawer>
+    <div class="main">
+        <div class="admin-container-header" *ngIf="isSwitching">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayout.lt-md="column" class="circle_aligment_pad"
+                fxLayoutAlign.lt-md="center center">
+                <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayout.lt-md="column" class="slide-in-left"
+                        fxLayoutAlign.lt-md="center center">
+                        <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%">
+                            <img src="assets/Platform.png" alt="" class="circleImg">
+                        </div>
+                        <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%">
+                            <h2 class="text-spacing">Identify and elevate tecnologists with the latest skills for asustainable future.</h2>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayout.lt-md="column" class="slide-in-left2"
+                        fxLayoutAlign.lt-md="center center">
+                        <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%"><img src="assets/Data.png" alt=""
+                                class="circleImg"></div>
+                        <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%">
+                            <h2 class="text-spacing">Combine business and tech skills from key functions across the
+                                board, and deliver effective engineering solutions.</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayout.lt-md="column"
+                fxLayoutAlign.lt-md="center center">
+                <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayout.lt-md="column" class="slide-in-left"
+                        fxLayoutAlign.lt-md="center center">
+                        <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%"><img src="assets/Health.png" alt=""
+                                class="circleImg"></div>
+                        <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%">
+                            <h2 class="text-spacing">Maintain a repository of tech assets spanning multiple technologies
+                                that support solutions for today and beyond</h2>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayout.lt-md="column" class="slide-in-left2"
+                        fxLayoutAlign.lt-md="center center">
+                        <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%"> <img src="assets/Quality.png" alt=""
+                                class="circleImg"></div>
+                        <div fxFlex="1 1 50%" fxFlex.lt-md="1 1 100%">
+                            <h2 class="text-spacing">Mentoring people across cirlces to succed</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</mat-drawer-container>

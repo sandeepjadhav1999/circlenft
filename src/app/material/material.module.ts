@@ -14,6 +14,13 @@ import {MatPaginatorModule} from '@angular/material/paginator'
 import {MatSortModule} from '@angular/material/sort';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 let components=[
   MatButtonModule,
@@ -30,8 +37,15 @@ let components=[
   MatPaginatorModule,
   MatSortModule,
   MatMenuModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatSidenavModule,
+  MatDividerModule,
+  MatListModule,
+  MatToolbarModule,
+  MatExpansionModule,
+  MatProgressSpinnerModule
 ]
+
 
 
 @NgModule({

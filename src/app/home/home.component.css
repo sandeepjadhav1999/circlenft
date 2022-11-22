@@ -17,6 +17,7 @@ video {
 }
 
 .loginButton {
+  margin-right: 10px;
   background-color: transparent;
   font-size: 30px;
   font-weight: 700;
@@ -33,6 +34,7 @@ video {
 .imgSource {
   filter: brightness(10%);
   width: 25%;
+  margin-left: 10px;
 }
 
 .text-right {
@@ -44,7 +46,7 @@ video {
   text-align: center;
 }
 .mainImage1 {
-  padding-top: 150px;
+  padding-top: 100px;
   width: 500px;
   filter: brightness(99%);
 }

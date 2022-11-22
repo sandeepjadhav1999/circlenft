@@ -1,0 +1,23 @@
+.text-right{
+    text-align: end;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 400%;
+    margin-bottom: 20px;
+    color: #2f7cbb;
+    padding-bottom: 10px;
+    border-bottom: 2px solid lightblue;
+}
+
+
+.nft-container{
+    max-width: 1600px;
+    margin: 10px auto;
+    position: relative;
+    border: 2px solid red;
+}
+
+.signleNgt-img{
+    width: 290px;
+    display: flex;
+    margin: 40px auto;
+}
