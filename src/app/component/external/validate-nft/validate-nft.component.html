@@ -63,13 +63,13 @@
                 <mat-form-field class="w-31 mr" appearance="outline">
                     <mat-label>Practice</mat-label>
                     <mat-select formControlName="practice" (selectionChange)="select()">
-                        <mat-option value="Platform">Platform</mat-option>
-                        <mat-option value="Experience">Experience</mat-option>
-                        <mat-option value="Cloud">Cloud</mat-option>
-                        <mat-option value="DataAndAI">Data & AI</mat-option>
-                        <mat-option value="QualityEngineering">Quality Engineering</mat-option>
-                        <mat-option value="HelthTech">Health Tech</mat-option>
-                        <mat-option value="Web3">Web3.0</mat-option>
+                        <mat-option value="Platform Engineering">Platform Engineering</mat-option>
+                        <!-- <mat-option value="Experience">Experience</mat-option> -->
+                        <!-- <mat-option value="Cloud">Cloud</mat-option> -->
+                        <mat-option value="Data & AI">Data & AI</mat-option>
+                        <mat-option value="Quality Engineering">Quality Engineering</mat-option>
+                        <mat-option value="Helth Tech">Health Tech</mat-option>
+                        <!-- <mat-option value="Web3">Web3.0</mat-option> -->
                     </mat-select>
                     <mat-error><strong>Parent Cricle </strong>can't be blank</mat-error>
                 </mat-form-field>
@@ -77,12 +77,13 @@
                 <mat-form-field class="w-31" appearance="outline">
                     <mat-label>Circle</mat-label>
                     <mat-select formControlName="circle" [errorStateMatcher]="customError" (selectionChange)="select()">
-                        <div *ngIf="validateNft.get('practice').value === 'Platform'">
-                            <mat-option value="Enterprise Solution & Architecture">Enterprise Solution & Architecture
-                            </mat-option>
-                            <mat-option value="Engineering Management">Engineering Management</mat-option>
-                            <mat-option value="Product">Product</mat-option>
-                            <mat-option value="DevOps & SRE">DevOps & SRE</mat-option>
+                        <div *ngIf="validateNft.get('practice').value === 'Platform Engineering'">
+                            <mat-option value="Architecture">Architecture</mat-option>
+                            <mat-option value="Experience">Experience</mat-option>
+                            <mat-option value="Web 3.0">Web 3.0</mat-option>
+                            <mat-option value="Products & Platforms">Products & Platforms</mat-option>
+                            <mat-option value="Operations">Operations</mat-option>
+                            <mat-option value="Enterprise solutions(SAP, SF)">Enterprise solutions(SAP, SF)</mat-option>
                         </div>
                         <div *ngIf="validateNft.get('practice').value === 'Experience'">
                             <mat-option value="Backend">Backend</mat-option>
@@ -96,19 +97,18 @@
                             <mat-option value="Cloud Architecture">Cloud Architecture</mat-option>
                         </div>
 
-                        <div *ngIf="validateNft.get('practice').value === 'DataAndAI'">
-                            <mat-option value="AIML">AIML</mat-option>
-                            <mat-option value="Full Stack Analysis">Full Stack Analysis</mat-option>
+                        <div *ngIf="validateNft.get('practice').value === 'Data & AI'">
+                            <mat-option value="AI ML">AI ML</mat-option>
                             <mat-option value="Data Engineering">Data Engineering</mat-option>
-                            <mat-option value="Database">Database</mat-option>
+                            <mat-option value="Data Analysis-Full Stack">Data Analysis-Full Stack</mat-option>
                         </div>
 
                         <div *ngIf="
-                        validateNft.get('practice').value === 'QualityEngineering'
+                        validateNft.get('practice').value === 'Quality Engineering'
                 ">
-                            <mat-option value="Quality">Quality</mat-option>
+                            <mat-option value="Quality Engineering">Quality Engineering</mat-option>
                         </div>
-                        <div *ngIf="validateNft.get('practice').value === 'HelthTech'">
+                        <div *ngIf="validateNft.get('practice').value === 'Helth Tech'">
                             <mat-option value="Health Tech">Health Tech</mat-option>
                         </div>
 

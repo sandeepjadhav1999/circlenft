@@ -9,7 +9,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { emailValidtor } from 'src/app/customValidator/email';
 import { CustomValidators } from 'src/app/customValidator/paasword';
+
+
+
 import { CustomError } from 'src/app/helpers/error-state';
+import { empData } from 'src/app/model/emp-data';
+import { EmpDataService } from 'src/app/service/emp-data.service';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
@@ -20,6 +25,9 @@ import { LoginService } from 'src/app/service/login.service';
 export class HomePopupComponent implements OnInit {
   // Error State Checker
   customError: CustomError = new CustomError();
+
+  //empData 
+  empData:empData[]=[]
 
   // form group open condition
   isLogging: boolean = true;
@@ -45,20 +53,29 @@ export class HomePopupComponent implements OnInit {
     private loginService: LoginService,
     private route: Router,
     private fb: FormBuilder,
+    private empDataService:EmpDataService,
     public matDialogRef:MatDialogRef<HomePopupComponent>
   ) {
+
+    this.empDataService.getempData().subscribe(
+      (res)=>{
+        this.empData=res
+        console.log(this.empData)
+      }
+    )
+
     this.adminLogin = new FormGroup({
       userName: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required]),
     });
 
     this.userLogin = new FormGroup({
-      userName: new FormControl(null, [Validators.required]),
+      userName: new FormControl(null, [Validators.required,]),
       password: new FormControl(null, [Validators.required]),
     });
 
     this.createAccount = new FormGroup({
-      userName: new FormControl(null, [Validators.required]),
+      userName: new FormControl(null, [Validators.required,]),
       password: new FormControl(null, [
         Validators.required,
         Validators.minLength(5),
@@ -70,7 +87,10 @@ export class HomePopupComponent implements OnInit {
       ]),
       role: new FormControl('user', [Validators.required]),
       passwordAllocatedBy: new FormControl('false', [Validators.required]),
-    });
+    },);
+
+   
+    
 
     this.updatePassword = this.fb.group(
       {
@@ -88,7 +108,9 @@ export class HomePopupComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    
+  }
 
   Adminlogging() {
     this.isLogging = false;

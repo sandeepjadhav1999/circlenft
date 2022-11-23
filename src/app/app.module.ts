@@ -28,6 +28,7 @@ import { ExternalOperationComponent } from './component/external/external-operat
 import { ValidateNftComponent } from './component/external/validate-nft/validate-nft.component';
 import { ValidateComponent } from './externalDialog/validate/validate.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,7 @@ import { ValidateComponent } from './externalDialog/validate/validate.component'
     UserHistoryComponent,
     ExternalOperationComponent,
     ValidateNftComponent,
-    ValidateComponent
+    ValidateComponent,
   ],
   imports: [
     BrowserModule,

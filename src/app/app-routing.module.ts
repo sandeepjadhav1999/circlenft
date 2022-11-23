@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth-guard';
 import { AdminOperationComponent } from './component/admin/admin-operation/admin-operation.component';
 import { AllNftComponent } from './component/admin/all-nft/all-nft.component';
 import { IssueNftComponent } from './component/admin/issue-nft/issue-nft.component';
@@ -15,22 +16,22 @@ const routes: Routes = [
   {
     path: "admin", children: [
       {
-        path: 'adminoperation', component: AdminOperationComponent, children: [
-          { path: 'issueNft', component: IssueNftComponent, },
-          { path: 'allNft', component: AllNftComponent},
-          { path: "singleNft/:nftOwner", component: SingleNftComponent }
+        path: 'adminoperation', component: AdminOperationComponent ,canActivate:[AuthGuard], children: [
+          { path: 'issueNft', component: IssueNftComponent, canActivate:[AuthGuard]},
+          { path: 'allNft', component: AllNftComponent ,canActivate:[AuthGuard]},
+          { path: "singleNft/:nftOwner", component: SingleNftComponent, canActivate:[AuthGuard] }
         ]
       },
     ]
   },
   {path:"user", children:[
-    {path:"userOperation",component:UserOperationComponent, children:[
-      {path:"userNft", component:UserNftComponent},
+    {path:"userOperation",component:UserOperationComponent,canActivate:[AuthGuard] ,children:[
+      {path:"userNft", component:UserNftComponent ,canActivate:[AuthGuard]},
     ]},  
   ]},
   {path:'external', children:[
-    {path:"externalOperation", component:ExternalOperationComponent, children:[
-      {path:"validateNft", component:ValidateNftComponent}]},  
+    {path:"externalOperation", component:ExternalOperationComponent, canActivate:[AuthGuard], children:[
+      {path:"validateNft", component:ValidateNftComponent, canActivate:[AuthGuard]}]},  
   ]},
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
