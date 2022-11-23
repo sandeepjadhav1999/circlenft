@@ -9,6 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { emailValidtor } from 'src/app/customValidator/email';
 import { CustomValidators } from 'src/app/customValidator/paasword';
+import { SiginValidators } from 'src/app/customValidator/siginEmail';
 
 
 
@@ -27,7 +28,7 @@ export class HomePopupComponent implements OnInit {
   customError: CustomError = new CustomError();
 
   //empData 
-  empData:empData[]=[]
+  empData: empData[] = []
 
   // form group open condition
   isLogging: boolean = true;
@@ -53,13 +54,13 @@ export class HomePopupComponent implements OnInit {
     private loginService: LoginService,
     private route: Router,
     private fb: FormBuilder,
-    private empDataService:EmpDataService,
-    public matDialogRef:MatDialogRef<HomePopupComponent>
+    private empDataService: EmpDataService,
+    public matDialogRef: MatDialogRef<HomePopupComponent>
   ) {
 
     this.empDataService.getempData().subscribe(
-      (res)=>{
-        this.empData=res
+      (res) => {
+        this.empData = res
         console.log(this.empData)
       }
     )
@@ -74,23 +75,33 @@ export class HomePopupComponent implements OnInit {
       password: new FormControl(null, [Validators.required]),
     });
 
-    this.createAccount = new FormGroup({
-      userName: new FormControl(null, [Validators.required,]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(5),
-      ]),
-      email: new FormControl(null, [
-        Validators.required,
-        Validators.email,
-        emailValidtor(),
-      ]),
-      role: new FormControl('user', [Validators.required]),
-      passwordAllocatedBy: new FormControl('false', [Validators.required]),
-    },);
+    // this.createAccount = new FormGroup({
+    //   userName: new FormControl(null, [Validators.required,]),
+    //   password: new FormControl(null, [
+    //     Validators.required,
+    //     Validators.minLength(5),
+    //   ]),
+    //   email: new FormControl(null, [
+    //     Validators.required,
+    //     Validators.email,
+    //     emailValidtor(),
+    //   ]),
+    //   role: new FormControl('user', [Validators.required]),
+    //   passwordAllocatedBy: new FormControl('false', [Validators.required]),
+    // },);
 
-   
-    
+    this.createAccount = this.fb.group(
+      {
+        userName:[null,[Validators.required,]],
+        password:[null, [Validators.required,Validators.minLength(5),]],
+        email: [null, [Validators.required,Validators.email,emailValidtor(),]],
+        role: ['user', [Validators.required]],
+        passwordAllocatedBy: ['false', [Validators.required]],
+      },
+      {validator: SiginValidators.MatchingUserName}
+    )
+
+
 
     this.updatePassword = this.fb.group(
       {
@@ -108,8 +119,8 @@ export class HomePopupComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { 
-    
+  ngOnInit(): void {
+
   }
 
   Adminlogging() {
@@ -172,9 +183,9 @@ export class HomePopupComponent implements OnInit {
             this.matSnackBarCloseAction();
             this.isSnackClose = 2;
           } else if (res[2] === 'Successfully LoggedIn') {
-            this.loginService.currentUser=this.adminLogin.get('userName').value
+            this.loginService.currentUser = this.adminLogin.get('userName').value
 
-            sessionStorage.setItem('loggedInUser',this.adminLogin.get('userName').value)
+            sessionStorage.setItem('loggedInUser', this.adminLogin.get('userName').value)
 
             this.loginService.isLoggedIn = true;
             this.isSnackBarOpen = true;
@@ -236,7 +247,7 @@ export class HomePopupComponent implements OnInit {
               'Successfully LoggedIn, Please update the password every 30 days once'
             ) {
 
-              sessionStorage.setItem('loggedInUser',this.userLogin.get('userName').value)
+              sessionStorage.setItem('loggedInUser', this.userLogin.get('userName').value)
               this.loginService.isLoggedIn = true;
               sessionStorage.setItem('userName', this.userLogin.value.userName);
 
@@ -251,7 +262,7 @@ export class HomePopupComponent implements OnInit {
                 this.route.navigate(['/', 'user', 'userOperation']);
               }, 2000);
             } else if (res[2] === 'Successfully LoggedIn') {
-              sessionStorage.setItem('loggedInUser',this.userLogin.get('userName').value)
+              sessionStorage.setItem('loggedInUser', this.userLogin.get('userName').value)
               this.loginService.isLoggedIn = true;
               sessionStorage.setItem('userName', this.userLogin.value.userName)
               this.isSnackBarOpen = true;
@@ -272,7 +283,7 @@ export class HomePopupComponent implements OnInit {
               this.userLogin.get('password').clearValidators();
               this.userLogin.get('password').updateValueAndValidity();
               this.isSnackBarOpen = true;
-              this.isSnackBarDesp ='Password expired, please update the password';
+              this.isSnackBarDesp = 'Password expired, please update the password';
               this.matSnackBarCloseAction();
               this.isSnackClose = 5
             }
@@ -313,7 +324,7 @@ export class HomePopupComponent implements OnInit {
             this.isSnackClose = 8;
           } else if (res[1] === 'External') {
             if (res[2] === 'Successfully LoggedIn') {
-              sessionStorage.setItem('loggedInUser',this.externalLogin.get('userName').value)
+              sessionStorage.setItem('loggedInUser', this.externalLogin.get('userName').value)
               this.loginService.isLoggedIn = true;
               this.isSnackBarOpen = true;
               this.isSnackBarDesp = 'Successfully Logged In';
@@ -343,7 +354,7 @@ export class HomePopupComponent implements OnInit {
         }
       );
     }
-   }
+  }
 
   signup() {
     if (this.createAccount.valid) {
@@ -357,7 +368,7 @@ export class HomePopupComponent implements OnInit {
           this.isSnackClose = 9;
           setTimeout(() => {
             this.isCreateAccount = false;
-            this.isUserLogging=true
+            this.isUserLogging = true
           }, 2000);
         },
         (err) => {
@@ -381,9 +392,9 @@ export class HomePopupComponent implements OnInit {
         }
       );
     }
-   }
+  }
 
-   updatingPassword(){
+  updatingPassword() {
     if (this.updatePassword.valid) {
       this.loginService.update(this.updatePassword.value).subscribe(
         (res) => {
@@ -398,7 +409,7 @@ export class HomePopupComponent implements OnInit {
             this.isSnackClose = 11;
             setTimeout(() => {
               this.isUpdatePassowrd = false;
-              this.isUserLogging=true
+              this.isUserLogging = true
             }, 2000);
           } else if (err.error.text == 'password successfully updated') {
             this.isSnackBarOpen = true;
@@ -412,7 +423,7 @@ export class HomePopupComponent implements OnInit {
         }
       );
     }
-   }
+  }
 
   getFormControl(controlName: string): FormControl {
     return this.createAccount.get(controlName) as FormControl;
@@ -425,6 +436,11 @@ export class HomePopupComponent implements OnInit {
           return "<strong>Email</strong> can't be blank";
         else if (errorType === 'email')
           return '<strong>Email</strong> should be in correct format. Eg: someone@example.com';
+        else return '';
+      }
+      case 'userName': {
+        if (errorType === 'required')
+          return "<strong>User Name</strong> can't be blank";
         else return '';
       }
       case 'password': {
@@ -445,7 +461,7 @@ export class HomePopupComponent implements OnInit {
     }, 2000);
   }
 
-  
+
   closeSnack() {
     if (this.isSnackClose === 1) {
       this.matDialogRef.close()
