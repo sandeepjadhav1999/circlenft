@@ -8,11 +8,10 @@ import {
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { emailValidtor } from 'src/app/customValidator/email';
+import { emailChecker } from 'src/app/customValidator/emailChecker';
+
 import { CustomValidators } from 'src/app/customValidator/paasword';
 import { SiginValidators } from 'src/app/customValidator/siginEmail';
-
-
-
 import { CustomError } from 'src/app/helpers/error-state';
 import { empData } from 'src/app/model/emp-data';
 import { EmpDataService } from 'src/app/service/emp-data.service';
@@ -28,7 +27,7 @@ export class HomePopupComponent implements OnInit {
   customError: CustomError = new CustomError();
 
   //empData 
-  empData: empData[] = []
+  empData: any[]=[]
 
   // form group open condition
   isLogging: boolean = true;
@@ -61,7 +60,7 @@ export class HomePopupComponent implements OnInit {
     this.empDataService.getempData().subscribe(
       (res) => {
         this.empData = res
-        console.log(this.empData)
+        console.log(this.empData[0])
       }
     )
 
@@ -94,7 +93,7 @@ export class HomePopupComponent implements OnInit {
       {
         userName:[null,[Validators.required,]],
         password:[null, [Validators.required,Validators.minLength(5),]],
-        email: [null, [Validators.required,Validators.email,emailValidtor(),]],
+        email: [null, [Validators.required,Validators.email,emailValidtor(), emailChecker(this.empDataService)]],
         role: ['user', [Validators.required]],
         passwordAllocatedBy: ['false', [Validators.required]],
       },

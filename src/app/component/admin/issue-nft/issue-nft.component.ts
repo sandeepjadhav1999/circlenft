@@ -115,7 +115,7 @@ export class IssueNftComponent implements OnInit {
 
           let dialogRef = new MatDialogConfig();
 
-          dialogRef.panelClass = 'dialog-box';
+          dialogRef.panelClass = 'dialog-boxxxx';
 
           dialogRef.data = result;
 

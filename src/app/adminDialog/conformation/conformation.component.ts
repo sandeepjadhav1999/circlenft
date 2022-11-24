@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ConformationComponent implements OnInit {
   isError: boolean = false;
+  isDuplicate:boolean =false
   constructor(
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
     private router: Router
@@ -19,6 +20,10 @@ export class ConformationComponent implements OnInit {
 
     if (this.dialogData === 'Error') {
       this.isError = true;
+    }
+
+    if (this.dialogData == "hi"){
+      this.isDuplicate = true
     }
   }
   confirm() {

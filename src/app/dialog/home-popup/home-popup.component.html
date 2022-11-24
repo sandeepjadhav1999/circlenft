@@ -135,6 +135,9 @@
                             <mat-error *ngIf="createAccount.get('email').hasError('emailNotAllowed')">
                                 This domain email ID is not allowed
                             </mat-error>
+                            <mat-error *ngIf="createAccount.get('email').hasError('emailCheckerNotAllowed')">
+                                 email ID is not allowed
+                            </mat-error>
                         </mat-form-field>
 
                         <mat-form-field class="w-100" appearance="outline">
