@@ -3,7 +3,7 @@
   <!-- <div><a style="border: solid 2px;" (click)="Back()" mat-stroked-button color="primary" class="mr"><mat-icon>arrow_back</mat-icon> &nbsp; Back</a></div> -->
 </div>
 <div class="issue-container">
-  <h1>Employee details</h1>
+  <h1><b>Employee details</b></h1>
   <div>
     <form [formGroup]="formGroup" style="margin-left: 4%; gap: 10px;">
       <mat-form-field class="w-45" appearance="outline" style="margin-top: 20px">
@@ -16,43 +16,43 @@
         </mat-autocomplete>
       </mat-form-field>
 
-      <mat-form-field class="w-25 mt w-39" appearance="outline">
+      <mat-form-field class="w-25 mt w-39" appearance="outline" id="point">
         <mat-label>Practice </mat-label>
-        <input type="text" placeholder="Enter practice" matInput formControlName="practice" />
+        <input type="text" id="point" placeholder="Enter practice" matInput formControlName="practice" />
       </mat-form-field>
-      <mat-form-field class="w-25 mt" appearance="outline">
+      <mat-form-field class="w-25 mt" appearance="outline" id="point">
         <mat-label>Circle </mat-label>
-        <input type="text" placeholder="Enter circle" matInput formControlName="circle" />
+        <input type="text" id="point" placeholder="Enter circle" matInput formControlName="circle" />
       </mat-form-field>
     </form>
   </div>
-  <h1>Nft details</h1>
+  <h1><b>NFT details</b></h1>
   <div>
     <form [formGroup]="issueNftFrom" class="formclass" style="margin-left: 4%;">
-      <mat-form-field class="w-30" appearance="outline">
+      <mat-form-field class="w-30" id="point" appearance="outline">
         <mat-label>User Name </mat-label>
-        <input type="text" placeholder="Enter UserName" matInput [value]="issueNftFrom.get('userName').value"
+        <input type="text" id="point" placeholder="Enter UserName" matInput [value]="issueNftFrom.get('userName').value"
           disabled="true" />
         <mat-error><strong>User Name </strong>can't be blank</mat-error>
       </mat-form-field>
-      <mat-form-field class="w-30" appearance="outline">
+      <mat-form-field class="w-30" id="point" appearance="outline">
         <mat-label>First Name </mat-label>
-        <input type="text" placeholder="Enter FirstName" matInput [value]="issueNftFrom.get('fName').value"
+        <input type="text" id="point" placeholder="Enter FirstName" matInput [value]="issueNftFrom.get('fName').value"
           disabled="true" />
         <mat-error><strong>First Name </strong>can't be blank</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="w-30" appearance="outline">
+      <mat-form-field id="point" class="w-30" appearance="outline">
         <mat-label>Last Name </mat-label>
-        <input type="text" placeholder="Enter LastName" matInput [value]="issueNftFrom.get('lName').value"
+        <input type="text" id="point" placeholder="Enter LastName" matInput [value]="issueNftFrom.get('lName').value"
           disabled="true" />
         <mat-error><strong>Last Name </strong>can't be blank</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="w-30" appearance="outline">
+      <mat-form-field id="point" class="w-30" appearance="outline">
         <mat-label>Email Id </mat-label>
         <input type="email" matInput placeholder="Enter Email" [value]="issueNftFrom.get('emailId').value"
-          disabled="true" [errorStateMatcher]="customError" />
+          disabled="true" [errorStateMatcher]="customError" id="point" />
         <mat-error *ngIf="getFormControl('emailId').hasError('required')"
           [innerHTML]="getErrorMessage('emailId', 'required')"></mat-error>
         <mat-error *ngIf="getFormControl('emailId').hasError('email')"

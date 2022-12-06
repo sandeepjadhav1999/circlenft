@@ -1,5 +1,25 @@
-<h1 mat-dialog-title class="text-center font-weight-bold">Validation</h1>
-<div mat-dialog-content><h3>It's a {{result.result}} Nft</h3></div>
-<div mat-dialog-actions fxLayoutAlign="end" >
-  <button mat-raised-button mat-dialog-close color="primary">Ok</button>
+<div [ngClass]="{'my-class': result.result==='Valid', 'my-class2':result.result==='Invalid'}">
+  <div style="margin-top: 12px;" *ngIf="result.result==='Valid'">
+    <picture>
+      <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f603/512.webp" type="image/webp">
+      <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f603/512.gif" alt="😃" width="32" height="32"
+        class="success">
+    </picture>
+  </div>
+  <div style="margin-top: 12px;" *ngIf="result.result==='Invalid'">
+    <picture>
+      <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f629/512.webp" type="image/webp">
+      <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f629/512.gif" alt="😩" width="32" height="32"
+        class="success">
+    </picture>
+  </div>
+  <div class="successContent">
+    <h1 mat-dialog-title class="text-center font-weight-bold" style="font-size: 20px;">Validation</h1>
+    <div mat-dialog-content>
+      <h3 class="Matcontent">{{result.result}} NFT</h3>
+    </div>
+    <div mat-dialog-actions fxLayoutAlign="end">
+      <button mat-raised-button mat-dialog-close color="primary">Close</button>
+    </div>
+  </div>
 </div>

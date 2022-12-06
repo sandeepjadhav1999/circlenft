@@ -10,7 +10,7 @@ import { HomePopupComponent } from '../dialog/home-popup/home-popup.component';
 export class HomeComponent implements OnInit {
   @ViewChild('playvideo') playvideo: ElementRef | any;
   
-  backgroundVideo:string="Play"
+  backgroundVideo:string="Pause"
   playpause: boolean = false;
 
   constructor(private matDialog:MatDialog) { }
@@ -21,11 +21,11 @@ export class HomeComponent implements OnInit {
   change() {
     this.playpause = !this.playpause;
     if (this.playpause) {
-      this.backgroundVideo = 'Pause';
-      this.playvideo.nativeElement.play();
-    } else {
       this.backgroundVideo = 'Play';
       this.playvideo.nativeElement.pause();
+    } else {
+      this.backgroundVideo = 'Pause';
+      this.playvideo.nativeElement.play();
     }
   }
 

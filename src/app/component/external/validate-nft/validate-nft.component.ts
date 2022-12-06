@@ -85,15 +85,18 @@ export class ValidateNftComponent implements OnInit {
   }
 
   validate(){
+    this.isCLicked = true
     if (this.validateNft.valid) {
       this.issueNftService.validateNft(this.validateNft.value).subscribe(
         (res)=>{
+          this.isCLicked=false
           let dialogConfig= new MatDialogConfig()
           dialogConfig.data=res
-          dialogConfig.width="300px"
+          dialogConfig.panelClass="validate-dialog"
           this.matDialog.open(ValidateComponent, dialogConfig)
 
-          if (res.result == "valid"){
+          if (res.result == "Valid"){
+            this.isCLicked=false
             this.validateNft.reset()
             this.validateNft.get("userName").clearValidators()
             this.validateNft.get("userName").updateValueAndValidity()
@@ -112,9 +115,24 @@ export class ValidateNftComponent implements OnInit {
             this.validateNft.get("url").clearValidators()
             this.validateNft.get("url").updateValueAndValidity()
             this.validateNft.get("nftId").clearValidators()
-            this.validateNft.get("nftId").updateValueAndValidity()  
+            this.validateNft.get("nftId").updateValueAndValidity() 
+            this.formGroup.reset() 
+            this.formGroup.get('practice').clearValidators()
+            this.formGroup.get('practice').updateValueAndValidity()
+            this.formGroup.get('circle').clearValidators()
+            this.formGroup.get('circle').updateValueAndValidity()
+            this.formGroup.get('employee').clearValidators()
+            this.formGroup.get('employee').updateValueAndValidity()
           }
           
+        },(err)=>{
+          this.isCLicked=false
+          let dialogConfig= new MatDialogConfig()
+          dialogConfig.data={result:"Invalid"}
+          dialogConfig.width="300px"
+          dialogConfig.disableClose=true
+          this.matDialog.open(ValidateComponent, dialogConfig)
+
         }
       )
     } 

@@ -83,3 +83,8 @@ mat-form-field {
   background-color: transparent;
   margin: 0 auto;
 }
+
+::ng-deep .mat-form-field-appearance-outline.byclass .mat-form-field-outline {
+  background-color: #fafbfd;
+  border-radius: 5px;
+}

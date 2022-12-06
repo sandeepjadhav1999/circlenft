@@ -48,10 +48,18 @@
                             <mat-error><strong>User Name </strong>can't be blank</mat-error>
                         </mat-form-field>
 
-                        <mat-form-field class="w-100" appearance="outline">
+                        <!-- <mat-form-field class="w-100" appearance="outline">
                             <mat-label>Password</mat-label>
                             <input type="password" matInput placeholder="Enter your password" autocomplete="on"
                                 formControlName="password" />
+                            <mat-error><strong>Password </strong>can't be blank</mat-error>
+                        </mat-form-field> -->
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" autocomplete="on"  formControlName="password" >
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
                             <mat-error><strong>Password </strong>can't be blank</mat-error>
                         </mat-form-field>
 
@@ -86,12 +94,23 @@
                             <mat-error><strong>User Name </strong>can't be blank</mat-error>
                         </mat-form-field>
 
-                        <mat-form-field class="w-100" appearance="outline">
+                        <!-- <mat-form-field class="w-100" appearance="outline">
                             <mat-label>Password</mat-label>
                             <input type="password" matInput placeholder="Enter your password" autocomplete="off"
                                 formControlName="password" />
                             <mat-error><strong>Password </strong>can't be blank</mat-error>
+                        </mat-form-field> -->
+
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" autocomplete="on"  formControlName="password" >
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error><strong>Password </strong>can't be blank</mat-error>
                         </mat-form-field>
+
+
                         <div class="updationLink">
                             <div class="new">
                                 <p (click)="newaccount()">Create New Account</p>
@@ -135,9 +154,6 @@
                             <mat-error *ngIf="createAccount.get('email').hasError('emailNotAllowed')">
                                 This domain email ID is not allowed
                             </mat-error>
-                            <mat-error *ngIf="createAccount.get('email').hasError('emailCheckerNotAllowed')">
-                                 email ID is not allowed
-                            </mat-error>
                         </mat-form-field>
 
                         <mat-form-field class="w-100" appearance="outline">
@@ -151,8 +167,10 @@
                         </mat-form-field>
                         <mat-form-field class="w-100" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input type="password" matInput placeholder="Enter your password" formControlName="password"
-                                [errorStateMatcher]="customError" />
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" autocomplete="on"  formControlName="password"  [errorStateMatcher]="customError" >
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
                             <mat-error *ngIf="getFormControl('password').hasError('required')"
                                 [innerHTML]="getErrorMessage('password', 'required')"></mat-error>
                             <mat-error *ngIf="getFormControl('password').hasError('minlength')"
@@ -192,24 +210,30 @@
                                 blank</mat-error>
                         </mat-form-field>
                         <mat-form-field class="w-100" appearance="outline">
-                            <mat-label>Old Password</mat-label>
-                            <input type="password" matInput placeholder="Enter your password"
-                                formControlName="old_password" />
+                            <mat-label>Old_password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" autocomplete="on"  formControlName="old_password" >
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
                             <mat-error><strong style="font-size: small">Password </strong>can't be
                                 blank</mat-error>
                         </mat-form-field>
                         <mat-form-field class="w-100" appearance="outline">
                             <mat-label>New Password</mat-label>
-                            <input matInput type="password" placeholder="Enter new password"
-                                formControlName="new_password" />
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" autocomplete="on"  formControlName="new_password" >
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
                             <mat-error *ngIf="updatePassword.get('new_password').hasError('required')"><strong
                                     style="font-size: small">New password </strong>is
                                 required</mat-error>
                         </mat-form-field>
                         <mat-form-field class="w-100" appearance="outline">
                             <mat-label>Confirm Password</mat-label>
-                            <input matInput placeholder="Confirm your password" formControlName="confirm_password"
-                                type="password" [errorStateMatcher]="customError" />
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" autocomplete="on"  formControlName="confirm_password" >
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
                             <mat-error *ngIf="updatePassword.get('confirm_password').hasError('required')">
                                 <strong style="font-size: small">Password confirmation </strong>is
                                 required
@@ -252,8 +276,10 @@
 
                         <mat-form-field class="w-100" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input type="password" matInput placeholder="Enter your password" autocomplete="off"
-                                formControlName="password" />
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" autocomplete="on"  formControlName="password" >
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
                             <mat-error><strong>Password </strong>can't be blank</mat-error>
                         </mat-form-field>
 

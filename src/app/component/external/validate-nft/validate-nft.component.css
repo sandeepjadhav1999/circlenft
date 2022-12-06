@@ -73,6 +73,7 @@ h1:after {
 }
 
 .pop {
+    filter: drop-shadow(2px 2px 12px black);
     position: absolute;
     top: 0;
     left: 990px;
@@ -95,3 +96,14 @@ h1:after {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.textColor{
+    color: black;
+    cursor: not-allowed;
+}
+
+::ng-deep .mat-form-field-appearance-outline.byclass .mat-form-field-outline {
+    background-color: #fafbfd;
+    border-radius: 5px;
+  }
+  

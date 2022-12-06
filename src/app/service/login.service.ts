@@ -4,19 +4,18 @@ import { Observable } from 'rxjs';
 import { Login } from '../model/login';
 import { signUp } from '../model/signup';
 import { updatePassword } from '../model/update-password';
-import { EmpDataService } from './emp-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   isLoggedIn: boolean = false;
-  currentUser: string
+  currentUser:string
 
-  constructor(private httpClient: HttpClient, private emp: EmpDataService) { }
+  constructor(private httpClient: HttpClient) {}
 
-  getCurrentUser() {
-    this.currentUser = sessionStorage.getItem("loggedInUser")
+  getCurrentUser(){
+    this.currentUser=sessionStorage.getItem("loggedInUser")
     console.log(sessionStorage.getItem("loggedInUser"))
   }
 
@@ -50,8 +49,4 @@ export class LoginService {
       this.isLoggedIn = true;
     }
   }
-
-
-  
-
 }

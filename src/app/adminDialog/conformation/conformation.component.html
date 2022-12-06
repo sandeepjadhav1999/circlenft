@@ -1,34 +1,90 @@
-<div *ngIf="!isError && !isDuplicate">
-    <h1 mat-dialog-title class="text-center font-weight-bold">Confirmation</h1>
-    <div mat-dialog-content style="margin:0 auto ;"><h3>NFT has been issued successfully</h3></div>
-    <div mat-dialog-actions fxLayoutAlign="end">
-      <button
-        mat-raised-button
-        mat-dialog-close
-        color="primary"
-        (click)="confirm()"
-      >
-        Proceed
-      </button>
+<div *ngIf="!isError && !isDuplicate && !isMultiple" class="confor">
+  <div class="successwave">
+    <div style="margin-top: 12px;">
+      <picture>
+        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f603/512.webp" type="image/webp">
+        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f603/512.gif" alt="😃" width="32" height="32"
+          class="success">
+      </picture>
+    </div>
+    <div class="successContent">
+      <h1 mat-dialog-title class="text-center font-weight-bold">Confirmation</h1>
+      <div mat-dialog-content>
+        <h3 class="Matcontent">NFT has been issued successfully</h3>
+      </div>
+      <div mat-dialog-actions fxLayoutAlign="end">
+        <button mat-raised-button mat-dialog-close color="primary" (click)="confirm()">
+          Close
+        </button>
+      </div>
     </div>
   </div>
-  <div *ngIf="isError">
-    <h1 mat-dialog-title class="text-center font-weight-bold">Error</h1>
-  
-    <div mat-dialog-content><h3>Something went wrong, Please try later!</h3></div>
-  
-    <div mat-dialog-actions fxLayoutAlign="end">
-      <button mat-raised-button mat-dialog-close color="primary">Close</button>
+</div>
+
+
+
+<div *ngIf="isError">
+  <div class="faliurWave">
+    <div style="margin-top: 12px;">
+      <picture>
+        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f629/512.webp" type="image/webp">
+        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f629/512.gif" alt="😩" width="32" height="32"
+          class="success">
+      </picture>
+    </div>
+    <div class="successContent">
+      <h1 mat-dialog-title class="text-center font-weight-bold">Error</h1>
+
+      <div mat-dialog-content>
+        <h3 class="Matcontent">Something went wrong, Please try later!</h3>
+      </div>
+
+      <div mat-dialog-actions fxLayoutAlign="end">
+        <button mat-raised-button mat-dialog-close color="primary">Close</button>
+      </div>
     </div>
   </div>
-  
-  <div *ngIf="isDuplicate">
-    <h1 mat-dialog-title class="text-center font-weight-bold">Error</h1>
-  
-    <div mat-dialog-content><h3>isDuplicate </h3></div>
-  
-    <div mat-dialog-actions fxLayoutAlign="end">
-      <button mat-raised-button mat-dialog-close color="primary">Close</button>
+
+</div>
+
+<div *ngIf="isDuplicate">
+  <div class="faliurWave">
+    <div style="margin-top: 12px;">
+      <picture>
+        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f629/512.webp" type="image/webp">
+        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f629/512.gif" alt="😩" width="32" height="32"
+          class="success">
+      </picture>
+    </div>
+    <div class="successContent">
+      <h1 mat-dialog-title class="text-center font-weight-bold">Error</h1>
+      <div mat-dialog-content>
+        <h3 class="Matcontent">{{ dialogData }}</h3>
+      </div>
+      <div mat-dialog-actions fxLayoutAlign="end">
+        <button mat-raised-button mat-dialog-close color="primary">Close</button>
+      </div>
     </div>
   </div>
-  
+</div>
+
+<div *ngIf="isMultiple">
+  <div class="faliurWave">
+    <div style="margin-top: 12px;">
+      <picture>
+        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f629/512.webp" type="image/webp">
+        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f629/512.gif" alt="😩" width="32" height="32"
+          class="success">
+      </picture>
+    </div>
+    <div class="successContent">
+      <h1 mat-dialog-title class="text-center font-weight-bold">Error</h1>
+      <div mat-dialog-content>
+        <h3>Please expire the current badge before assigning new badge</h3>
+      </div>
+      <div mat-dialog-actions fxLayoutAlign="end">
+        <button mat-raised-button mat-dialog-close color="primary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

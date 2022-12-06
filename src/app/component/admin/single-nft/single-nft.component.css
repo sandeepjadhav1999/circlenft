@@ -13,10 +13,16 @@
     max-width: 1600px;
     margin: 10px auto;
     position: relative;
+    
 }
 
 .signleNgt-img{
     width: 290px;
     display: flex;
     margin: 40px auto;
+}
+
+#change:hover{
+    text-decoration: underline;
+    color: blue;
 }

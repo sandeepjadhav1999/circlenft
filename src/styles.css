@@ -31,8 +31,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 
-.dialog-boxxxx{
-  width: 550px !important;
+.dialog-boxxxx .mat-dialog-container{
+  width: 480px !important;
+  height: 240px;
+  padding: 0;
+}
+
+.validate-dialog .mat-dialog-container{
+  width: 400px;
+  height: 250px;
+  padding: 0;
 }
 
 .text-center {

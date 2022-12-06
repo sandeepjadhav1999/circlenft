@@ -8,10 +8,11 @@ import {
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { emailValidtor } from 'src/app/customValidator/email';
-import { emailChecker } from 'src/app/customValidator/emailChecker';
-
 import { CustomValidators } from 'src/app/customValidator/paasword';
 import { SiginValidators } from 'src/app/customValidator/siginEmail';
+
+
+
 import { CustomError } from 'src/app/helpers/error-state';
 import { empData } from 'src/app/model/emp-data';
 import { EmpDataService } from 'src/app/service/emp-data.service';
@@ -23,11 +24,15 @@ import { LoginService } from 'src/app/service/login.service';
   styleUrls: ['./home-popup.component.css'],
 })
 export class HomePopupComponent implements OnInit {
+
+  hide = true;
+
+
   // Error State Checker
   customError: CustomError = new CustomError();
 
   //empData 
-  empData: any[]=[]
+  empData: empData[] = []
 
   // form group open condition
   isLogging: boolean = true;
@@ -60,7 +65,7 @@ export class HomePopupComponent implements OnInit {
     this.empDataService.getempData().subscribe(
       (res) => {
         this.empData = res
-        console.log(this.empData[0])
+        console.log(this.empData)
       }
     )
 
@@ -93,7 +98,7 @@ export class HomePopupComponent implements OnInit {
       {
         userName:[null,[Validators.required,]],
         password:[null, [Validators.required,Validators.minLength(5),]],
-        email: [null, [Validators.required,Validators.email,emailValidtor(), emailChecker(this.empDataService)]],
+        email: [null, [Validators.required,Validators.email,emailValidtor(),]],
         role: ['user', [Validators.required]],
         passwordAllocatedBy: ['false', [Validators.required]],
       },
@@ -151,6 +156,10 @@ export class HomePopupComponent implements OnInit {
     this.isUserLogging = false;
     this.isCreateAccount = false;
     this.isOtherLogging = false;
+
+    if(this.hide === false){
+      this.hide = true
+    }
   }
 
   CreateBack() {
@@ -321,7 +330,7 @@ export class HomePopupComponent implements OnInit {
             this.isSnackBarDesp = 'You are not allowed to visit this page';
             this.matSnackBarCloseAction();
             this.isSnackClose = 8;
-          } else if (res[1] === 'External') {
+          } else if (res[1] === 'External' || res[1] === 'external') {
             if (res[2] === 'Successfully LoggedIn') {
               sessionStorage.setItem('loggedInUser', this.externalLogin.get('userName').value)
               this.loginService.isLoggedIn = true;

@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class ConformationComponent implements OnInit {
   isError: boolean = false;
-  isDuplicate:boolean =false
+  isDuplicate: boolean = false;
+  isMultiple: boolean = false;
   constructor(
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
     private router: Router
@@ -21,13 +22,16 @@ export class ConformationComponent implements OnInit {
     if (this.dialogData === 'Error') {
       this.isError = true;
     }
-
-    if (this.dialogData == "hi"){
-      this.isDuplicate = true
+    if (this.dialogData.includes('badge already issued to this user')) {
+      this.isDuplicate = true;
+    }
+    if (
+      this.dialogData === "You can't issue multiple nfts in the same circle"
+    ) {
+      this.isMultiple = true;
     }
   }
   confirm() {
     this.router.navigate(['/admin','adminoperation', 'singleNft', this.dialogData.userName]);
   }
-
 }
